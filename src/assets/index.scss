@@ -1,0 +1,800 @@
+// Bootstrap
+@import url(../../node_modules/bootstrap/dist/css/bootstrap.min.css);
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+
+// Main styles
+
+* {
+    -webkit-user-drag: none;
+}
+
+html{
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+$white-color: #fff;
+$white-color-50: #ddd;
+$black-color: #121212;
+$main-color: #fcaf17;
+$cairo-font: 'Cairo',
+sans-serif;
+$fantasy-font: fantasy,
+serif;
+$font-weight-500: 500;
+$font-weight-700: 700;
+$font-size-sm: 1.1rem;
+$font-size-md: 1.4rem;
+$font-size-lg: 2.5rem;
+$transition: 0.5s all ease;
+
+@mixin btn-global($p) {
+    cursor: pointer;
+    transition: $transition;
+    font-size: $font-size-sm;
+    padding: $p;
+    background: transparent;
+    color: $white-color-50;
+    border: 1px solid $white-color;
+    border-radius: 4px;
+    font-weight: $font-weight-500;
+
+    a {
+        transition: $transition;
+        color: $white-color;
+    }
+
+    &:hover {
+        background: $white-color;
+        color: $black-color;
+    }
+
+    &:hover a {
+        color: $black-color;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $main-color;
+    border-radius: 10px;
+}
+
+::selection {
+    background: $main-color;
+    color: $black-color;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    color: $white-color !important;
+    border-bottom: 2px solid $main-color !important;
+}
+
+.title {
+    max-width: 600px;
+    margin: 15px 0;
+    color: $white-color;
+    font-size: $font-size-lg;
+    font-family: fantasy;
+    letter-spacing: 3px;
+}
+
+.alert {
+    z-index: -1;
+    border: 1px solid $white-color-50;
+    border-radius: 10px;
+    margin: 20px auto;
+    color: $white-color;
+    font-size: $font-size-md;
+    font-family: $cairo-font;
+    font-weight: bold;
+    padding: 1.3em 1.4rem;
+    background: #000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: $black-color !important;
+    overflow-x: hidden;
+}
+
+// Start(welecome) section
+
+#start {
+    display: grid;
+    place-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/images/start.jpg) no-repeat;
+    background-size: cover;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000b8;
+    }
+
+    .container{
+        z-index: 1;
+
+        h1 {
+            text-align: center;
+            font-size: $font-size-md * 1.5;
+        }
+    
+        img {
+            display: block;
+            margin: 10px auto;
+            width: 180px;
+            height: 180px;
+        }
+
+        .btn-global{
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            @include btn-global(20px 0);
+            font-size: $font-size-md * 1.1;
+
+            a{
+                padding: 25px 100px !important;
+                height: 60px !important;
+            }
+        }
+    }
+}
+
+// Navbar
+.navbar {
+    background: $black-color;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    a {
+        z-index: 9999;
+
+        .navbar__logo {
+            object-fit: contain;
+            width: 55px;
+            height: 55px;
+        }
+    }
+
+    .nav {
+        &.nav-active {
+            transform: scale(1) !important;
+            opacity: 1 !important;
+        }
+
+        .nav-link {
+            margin: 0 2px;
+            transition: $transition;
+            font-size: $font-size-sm;
+            color: $white-color-50;
+            font-weight: $font-weight-500;
+            border-bottom: 2px solid transparent;
+
+            &:hover {
+                color: $white-color;
+                border-bottom: 2px solid $main-color;
+            }
+        }
+    }
+
+    .btn-global {
+        margin-left: 180px;
+        @include btn-global(7px 20px);
+    }
+
+    #menu {
+        cursor: pointer;
+        display: none;
+        z-index: 9999;
+        position: relative;
+        width: 35px;
+        height: 3.5px;
+        background: $white-color;
+
+        &.menu-active {
+
+            &::after,
+            &::before {
+                top: 0;
+            }
+        }
+
+        &::after {
+            transition: $transition;
+            content: "";
+            position: absolute;
+            top: -12px;
+            left: 0;
+            width: 35px;
+            height: 3.5px;
+            background: $white-color;
+        }
+
+        &::before {
+            transition: $transition;
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 35px;
+            height: 3.5px;
+            background: $white-color;
+        }
+    }
+}
+
+// section pages
+
+@mixin sectionBg($img) {
+    background-image: $img;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.section {
+    position: relative;
+    height: 650px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, #000000b8 65%, #00000000);
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        flex-direction: column;
+
+        .text {
+            max-width: 520px;
+
+            h1 {
+                margin: 5px 0;
+                font-size: $font-size-lg;
+                color: $white-color;
+                font-family: $fantasy-font;
+                letter-spacing: 4px;
+                font-weight: $font-weight-500;
+            }
+
+            p {
+                font-family: $cairo-font;
+                font-size: $font-size-md;
+                color: $white-color;
+                font-weight: bold;
+            }
+
+            a {
+                &:nth-child(2) {
+                    margin-left: 22px;
+                }
+            }
+
+            .btn-cnt {
+                display: flex;
+
+                .btn-global {
+                    margin: 10px 0;
+                    @include btn-global(1.2rem 2.5rem);
+                    font-family: $fantasy-font;
+                    font-size: $font-size-md;
+                }
+            }
+
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            margin: 10px 12px;
+        }
+    }
+}
+
+.main-img {
+    object-fit: contain;
+    width: 100%;
+}
+
+// overview
+
+#overview {
+    .section {
+        @include sectionBg(url(../assets/images/overview-bg.jpg))
+    }
+
+    .info {
+
+        .info__card {
+            margin: 80px auto;
+
+            img {
+                border-radius: 10px;
+                width: 100%;
+            }
+
+            .logo-img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+                width: 150px;
+                height: 150px;
+            }
+
+            .info__card__text {
+                max-width: 850px;
+
+                p {
+                    color: $white-color;
+                    font-size: $font-size-md;
+                    font-family: $cairo-font;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.dw {
+    .dw__card {
+        border-radius: 10px;
+        border: 1px solid $white-color-50;
+        overflow: hidden;
+        max-width: 600px;
+        margin: 20px auto;
+
+        .dw__card__img {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url(../assets/images/overview/gta-bg.png) no-repeat;
+            background-size: cover;
+
+            img {
+                display: block;
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        .dw__card__text {
+            padding: 20px;
+            background: #000;
+
+            p {
+                color: $main-color;
+                font-family: $cairo-font;
+                font-weight: $font-weight-700;
+                font-size: $font-size-md;
+            }
+
+            h2 {
+                color: $white-color-50;
+                font-size: $font-size-md;
+            }
+
+            ul {
+                list-style-image: linear-gradient(#fcaf17, #fcaf17);
+
+                li {
+                    margin: 5px auto;
+                    color: $white-color-50;
+                    font-size: $font-size-sm;
+                    font-family: $cairo-font;
+                }
+            }
+
+            .btn-global {
+                @include btn-global(10px);
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Gta online page
+
+#gtaOnline {
+    .section {
+        @include sectionBg(url(../assets/images/gta-online-bg.jpg))
+    }
+}
+
+// Gta V page
+
+#gtaV {
+    .section {
+        @include sectionBg(url(../assets/images/overview/7.png))
+    }
+
+    .carousel__item img {
+        object-fit: cover !important;
+    }
+}
+
+// Guides page
+
+#guides {
+    .section {
+        @include sectionBg(url(../assets/images/guides/main.jpg))
+    }
+
+    .guide {
+        .info {
+            overflow: hidden;
+            border: 2px solid $white-color;
+            border-radius: 15px;
+
+            img {
+                width: 100%;
+                min-height: 350px;
+                object-fit: cover;
+                border-bottom: 2px solid $white-color;
+            }
+
+            .text {
+                margin: 10px;
+                padding: 5px;
+                height: 600px;
+                overflow-y: scroll;
+
+                p {
+                    font-weight: $font-weight-700;
+                    color: $white-color;
+                    font-family: $cairo-font;
+                    font-size: $font-size-md;
+
+                    ul {
+                        margin: 10px;
+
+                        li {
+                            margin: 10px 0;
+                            color: $white-color-50;
+                        }
+                    }
+                }
+            }
+        }
+
+        .questions {
+            .alert-question {
+                overflow: hidden;
+                user-select: none;
+                font-weight: bold;
+                transition: $transition;
+                cursor: pointer;
+                z-index: 1;
+
+                h3 {
+                    pointer-events: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    i {
+                        transition: $transition;
+                    }
+                }
+
+                p {
+                    margin-top: 10px;
+                    padding-top: 10px;
+                    color: $main-color;
+                    transition: $transition;
+
+                    visibility: hidden;
+                    position: absolute;
+                    opacity: 0;
+                }
+
+                &.question-active {
+                    background: transparent;
+                    border-color: $main-color;
+
+                    i {
+                        transform: rotate(180deg);
+                    }
+
+                    p {
+                        visibility: visible !important;
+                        position: static !important;
+                        opacity: 1 !important;
+                    }
+                }
+
+                &:hover {
+                    background: transparent;
+                }
+            }
+        }
+    }
+}
+
+// carousel settings
+
+.slider-cnt {
+    margin: 10px auto;
+
+    .carousel__item-oneSlide {
+        height: 600px !important;
+    }
+
+    .carousel__item {
+        cursor: grab;
+        overflow: hidden;
+        border-radius: 10px;
+        position: relative;
+        width: 400px;
+        height: 400px;
+
+        &:active {
+            border: 2px solid $main-color;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .title {
+            border: 1px solid $white-color-50;
+            backdrop-filter: blur(2px);
+            border-radius: 10px;
+            padding: 10px;
+            background: #00000072;
+            text-shadow: 0 0 5px $main-color;
+            position: absolute;
+            left: 3%;
+            bottom: 3%;
+            font-size: $font-size-md * 1.5;
+        }
+    }
+}
+
+.slick-slide {
+    padding: 10px;
+}
+
+.slick-next {
+    right: -5px;
+    z-index: 10 !important;
+    transform: scale(1.5);
+}
+
+.slick-prev {
+    left: -5px;
+    z-index: 10 !important;
+    transform: scale(1.5);
+}
+
+// trailer modal
+
+.trailerModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000c3;
+
+    i {
+        transition: $transition;
+        cursor: pointer;
+        padding: 10px;
+        display: grid;
+        place-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid $white-color;
+        border-radius: 50%;
+        position: fixed;
+        color: $white-color;
+        font-size: $font-size-lg - 0.3;
+        top: 14%;
+        right: 10%;
+
+        &:hover {
+            color: $black-color;
+            background: $white-color;
+        }
+    }
+
+    .trailerModal__video {
+        border-radius: 20px;
+        border: 10px solid $main-color;
+        position: fixed;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+// Footer
+
+footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    img {
+        margin: 20px auto;
+        width: 80px;
+        height: 80px;
+    }
+
+    p {
+        color: $white-color;
+        font-size: $font-size-md;
+        font-family: $cairo-font;
+        font-weight: $font-weight-700;
+        max-width: 500px;
+    }
+
+    .line {
+        margin: 20px auto;
+        background: $white-color-50;
+        width: 100%;
+        height: 1px;
+    }
+
+    h2 {
+        font-family: $fantasy-font;
+        letter-spacing: 4px;
+        font-size: $font-size-md * 1.2;
+        color: $white-color-50;
+
+        a {
+            transition: $transition;
+            color: $white-color-50;
+            border-bottom: 2px solid $main-color;
+
+            &:hover {
+                color: $white-color;
+            }
+        }
+    }
+}
+
+// Responsive
+
+@media(max-width: 920px) {
+    html {
+        font-size: 13px;
+    }
+
+    .navbar .nav .btn-global {
+        margin-left: 50px;
+    }
+}
+
+@media(max-width: 770px) {
+    .navbar {
+
+        .nav {
+            transition: $transition;
+            transform: scale(0);
+            opacity: 0;
+            z-index: 999;
+            background: linear-gradient(#000, #123, #333);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .btn-global {
+            margin-top: 12px;
+            margin-left: 0 !important;
+        }
+
+        #menu {
+            display: block;
+        }
+    }
+
+    .section::after {
+        background: #0000005b;
+        width: 100%;
+    }
+
+    .trailerModal {
+
+        i {
+            top: 17.5%;
+            right: 42%;
+        }
+
+        .trailerModal__video {
+            width: 100%;
+            height: 400px;
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .section {
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        a:nth-child(2) {
+            margin-left: 0 !important;
+        }
+
+        .btn-cnt {
+            flex-direction: column;
+
+            .btn-global {
+                width: 100%;
+
+                &:nth-child(2) {
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+
+    #gtaOnline .slider-cnt {
+        .carousel__item {
+            height: 300px !important;
+        }
+    }
+}
+
+@media(max-width: 340px) {
+    .section .img-cnt {
+        img {
+            width: 85px;
+            height: 85px;
+        }
+    }
+}

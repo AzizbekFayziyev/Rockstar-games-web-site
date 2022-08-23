@@ -1,0 +1,700 @@
+@import url(../../node_modules/bootstrap/dist/css/bootstrap.min.css);
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap");
+* {
+  -webkit-user-drag: none;
+}
+
+html {
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fcaf17;
+  border-radius: 10px;
+}
+
+::selection {
+  background: #fcaf17;
+  color: #121212;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  color: #fff !important;
+  border-bottom: 2px solid #fcaf17 !important;
+}
+
+.title {
+  max-width: 600px;
+  margin: 15px 0;
+  color: #fff;
+  font-size: 2.5rem;
+  font-family: fantasy;
+  letter-spacing: 3px;
+}
+
+.alert {
+  z-index: -1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 20px auto;
+  color: #fff;
+  font-size: 1.4rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  padding: 1.3em 1.4rem;
+  background: #000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #121212 !important;
+  overflow-x: hidden;
+}
+
+#start {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/images/start.jpg) no-repeat;
+  background-size: cover;
+}
+#start::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000b8;
+}
+#start .container {
+  z-index: 1;
+}
+#start .container h1 {
+  text-align: center;
+  font-size: 2.1rem;
+}
+#start .container img {
+  display: block;
+  margin: 10px auto;
+  width: 180px;
+  height: 180px;
+}
+#start .container .btn-global {
+  height: auto;
+  display: block;
+  margin: 25px auto;
+  cursor: pointer;
+  transition: 0.5s all ease;
+  font-size: 1.1rem;
+  padding: 20px 0;
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.54rem;
+}
+#start .container .btn-global a {
+  transition: 0.5s all ease;
+  color: #fff;
+}
+#start .container .btn-global:hover {
+  background: #fff;
+  color: #121212;
+}
+#start .container .btn-global:hover a {
+  color: #121212;
+}
+#start .container .btn-global a {
+  padding: 25px 100px !important;
+  height: 60px !important;
+}
+
+.navbar {
+  background: #121212;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.navbar a {
+  z-index: 9999;
+}
+.navbar a .navbar__logo {
+  object-fit: contain;
+  width: 55px;
+  height: 55px;
+}
+.navbar .nav.nav-active {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+.navbar .nav .nav-link {
+  margin: 0 2px;
+  transition: 0.5s all ease;
+  font-size: 1.1rem;
+  color: #ddd;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+}
+.navbar .nav .nav-link:hover {
+  color: #fff;
+  border-bottom: 2px solid #fcaf17;
+}
+.navbar .btn-global {
+  margin-left: 180px;
+  cursor: pointer;
+  transition: 0.5s all ease;
+  font-size: 1.1rem;
+  padding: 7px 20px;
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.navbar .btn-global a {
+  transition: 0.5s all ease;
+  color: #fff;
+}
+.navbar .btn-global:hover {
+  background: #fff;
+  color: #121212;
+}
+.navbar .btn-global:hover a {
+  color: #121212;
+}
+.navbar #menu {
+  cursor: pointer;
+  display: none;
+  z-index: 9999;
+  position: relative;
+  width: 35px;
+  height: 3.5px;
+  background: #fff;
+}
+.navbar #menu.menu-active::after, .navbar #menu.menu-active::before {
+  top: 0;
+}
+.navbar #menu::after {
+  transition: 0.5s all ease;
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 35px;
+  height: 3.5px;
+  background: #fff;
+}
+.navbar #menu::before {
+  transition: 0.5s all ease;
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 35px;
+  height: 3.5px;
+  background: #fff;
+}
+
+.section {
+  position: relative;
+  height: 650px;
+}
+.section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, #000000b8 65%, #00000000);
+}
+.section .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+.section .container .text {
+  max-width: 520px;
+}
+.section .container .text h1 {
+  margin: 5px 0;
+  font-size: 2.5rem;
+  color: #fff;
+  font-family: fantasy, serif;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+.section .container .text p {
+  font-family: "Cairo", sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: bold;
+}
+.section .container .text a:nth-child(2) {
+  margin-left: 22px;
+}
+.section .container .text .btn-cnt {
+  display: flex;
+}
+.section .container .text .btn-cnt .btn-global {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s all ease;
+  font-size: 1.1rem;
+  padding: 1.2rem 2.5rem;
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-weight: 500;
+  font-family: fantasy, serif;
+  font-size: 1.4rem;
+}
+.section .container .text .btn-cnt .btn-global a {
+  transition: 0.5s all ease;
+  color: #fff;
+}
+.section .container .text .btn-cnt .btn-global:hover {
+  background: #fff;
+  color: #121212;
+}
+.section .container .text .btn-cnt .btn-global:hover a {
+  color: #121212;
+}
+.section .container img {
+  width: 150px;
+  height: 150px;
+  margin: 10px 12px;
+}
+
+.main-img {
+  object-fit: contain;
+  width: 100%;
+}
+
+#overview .section {
+  background-image: url(../assets/images/overview-bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+#overview .info .info__card {
+  margin: 80px auto;
+}
+#overview .info .info__card img {
+  border-radius: 10px;
+  width: 100%;
+}
+#overview .info .info__card .logo-img {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 150px;
+}
+#overview .info .info__card .info__card__text {
+  max-width: 850px;
+}
+#overview .info .info__card .info__card__text p {
+  color: #fff;
+  font-size: 1.4rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+}
+
+.dw .dw__card {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 20px auto;
+}
+.dw .dw__card .dw__card__img {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../assets/images/overview/gta-bg.png) no-repeat;
+  background-size: cover;
+}
+.dw .dw__card .dw__card__img img {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+.dw .dw__card .dw__card__text {
+  padding: 20px;
+  background: #000;
+}
+.dw .dw__card .dw__card__text p {
+  color: #fcaf17;
+  font-family: "Cairo", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.dw .dw__card .dw__card__text h2 {
+  color: #ddd;
+  font-size: 1.4rem;
+}
+.dw .dw__card .dw__card__text ul {
+  list-style-image: linear-gradient(#fcaf17, #fcaf17);
+}
+.dw .dw__card .dw__card__text ul li {
+  margin: 5px auto;
+  color: #ddd;
+  font-size: 1.1rem;
+  font-family: "Cairo", sans-serif;
+}
+.dw .dw__card .dw__card__text .btn-global {
+  cursor: pointer;
+  transition: 0.5s all ease;
+  font-size: 1.1rem;
+  padding: 10px;
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-weight: 500;
+  width: 100%;
+}
+.dw .dw__card .dw__card__text .btn-global a {
+  transition: 0.5s all ease;
+  color: #fff;
+}
+.dw .dw__card .dw__card__text .btn-global:hover {
+  background: #fff;
+  color: #121212;
+}
+.dw .dw__card .dw__card__text .btn-global:hover a {
+  color: #121212;
+}
+
+#gtaOnline .section {
+  background-image: url(../assets/images/gta-online-bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+#gtaV .section {
+  background-image: url(../assets/images/overview/7.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+#gtaV .carousel__item img {
+  object-fit: cover !important;
+}
+
+#guides .section {
+  background-image: url(../assets/images/guides/main.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+#guides .guide .info {
+  overflow: hidden;
+  border: 2px solid #fff;
+  border-radius: 15px;
+}
+#guides .guide .info img {
+  width: 100%;
+  min-height: 350px;
+  object-fit: cover;
+  border-bottom: 2px solid #fff;
+}
+#guides .guide .info .text {
+  margin: 10px;
+  padding: 5px;
+  height: 600px;
+  overflow-y: scroll;
+}
+#guides .guide .info .text p {
+  font-weight: 700;
+  color: #fff;
+  font-family: "Cairo", sans-serif;
+  font-size: 1.4rem;
+}
+#guides .guide .info .text p ul {
+  margin: 10px;
+}
+#guides .guide .info .text p ul li {
+  margin: 10px 0;
+  color: #ddd;
+}
+#guides .guide .questions .alert-question {
+  overflow: hidden;
+  user-select: none;
+  font-weight: bold;
+  transition: 0.5s all ease;
+  cursor: pointer;
+  z-index: 1;
+}
+#guides .guide .questions .alert-question h3 {
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#guides .guide .questions .alert-question h3 i {
+  transition: 0.5s all ease;
+}
+#guides .guide .questions .alert-question p {
+  margin-top: 10px;
+  padding-top: 10px;
+  color: #fcaf17;
+  transition: 0.5s all ease;
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+}
+#guides .guide .questions .alert-question.question-active {
+  background: transparent;
+  border-color: #fcaf17;
+}
+#guides .guide .questions .alert-question.question-active i {
+  transform: rotate(180deg);
+}
+#guides .guide .questions .alert-question.question-active p {
+  visibility: visible !important;
+  position: static !important;
+  opacity: 1 !important;
+}
+#guides .guide .questions .alert-question:hover {
+  background: transparent;
+}
+
+.slider-cnt {
+  margin: 10px auto;
+}
+.slider-cnt .carousel__item-oneSlide {
+  height: 600px !important;
+}
+.slider-cnt .carousel__item {
+  cursor: grab;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+.slider-cnt .carousel__item:active {
+  border: 2px solid #fcaf17;
+}
+.slider-cnt .carousel__item img {
+  width: 100%;
+  height: 100%;
+}
+.slider-cnt .carousel__item .title {
+  border: 1px solid #ddd;
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  padding: 10px;
+  background: #00000072;
+  text-shadow: 0 0 5px #fcaf17;
+  position: absolute;
+  left: 3%;
+  bottom: 3%;
+  font-size: 2.1rem;
+}
+
+.slick-slide {
+  padding: 10px;
+}
+
+.slick-next {
+  right: -5px;
+  z-index: 10 !important;
+  transform: scale(1.5);
+}
+
+.slick-prev {
+  left: -5px;
+  z-index: 10 !important;
+  transform: scale(1.5);
+}
+
+.trailerModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000c3;
+}
+.trailerModal i {
+  transition: 0.5s all ease;
+  cursor: pointer;
+  padding: 10px;
+  display: grid;
+  place-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: fixed;
+  color: #fff;
+  font-size: 2.2rem;
+  top: 14%;
+  right: 10%;
+}
+.trailerModal i:hover {
+  color: #121212;
+  background: #fff;
+}
+.trailerModal .trailerModal__video {
+  border-radius: 20px;
+  border: 10px solid #fcaf17;
+  position: fixed;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+footer {
+  margin-top: 80px;
+  padding: 40px 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+footer img {
+  margin: 20px auto;
+  width: 80px;
+  height: 80px;
+}
+footer p {
+  color: #fff;
+  font-size: 1.4rem;
+  font-family: "Cairo", sans-serif;
+  font-weight: 700;
+  max-width: 500px;
+}
+footer .line {
+  margin: 20px auto;
+  background: #ddd;
+  width: 100%;
+  height: 1px;
+}
+footer h2 {
+  font-family: fantasy, serif;
+  letter-spacing: 4px;
+  font-size: 1.68rem;
+  color: #ddd;
+}
+footer h2 a {
+  transition: 0.5s all ease;
+  color: #ddd;
+  border-bottom: 2px solid #fcaf17;
+}
+footer h2 a:hover {
+  color: #fff;
+}
+
+@media (max-width: 920px) {
+  html {
+    font-size: 13px;
+  }
+
+  .navbar .nav .btn-global {
+    margin-left: 50px;
+  }
+}
+@media (max-width: 770px) {
+  .navbar .nav {
+    transition: 0.5s all ease;
+    transform: scale(0);
+    opacity: 0;
+    z-index: 999;
+    background: linear-gradient(#000, #123, #333);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .navbar .btn-global {
+    margin-top: 12px;
+    margin-left: 0 !important;
+  }
+  .navbar #menu {
+    display: block;
+  }
+
+  .section::after {
+    background: #0000005b;
+    width: 100%;
+  }
+
+  .trailerModal i {
+    top: 17.5%;
+    right: 42%;
+  }
+  .trailerModal .trailerModal__video {
+    width: 100%;
+    height: 400px;
+  }
+}
+@media (max-width: 480px) {
+  .section img {
+    width: 100px;
+    height: 100px;
+  }
+  .section a:nth-child(2) {
+    margin-left: 0 !important;
+  }
+  .section .btn-cnt {
+    flex-direction: column;
+  }
+  .section .btn-cnt .btn-global {
+    width: 100%;
+  }
+  .section .btn-cnt .btn-global:nth-child(2) {
+    margin: 0 !important;
+  }
+
+  #gtaOnline .slider-cnt .carousel__item {
+    height: 300px !important;
+  }
+}
+@media (max-width: 340px) {
+  .section .img-cnt img {
+    width: 85px;
+    height: 85px;
+  }
+}
